@@ -147,7 +147,7 @@
   {
     "id": 8,
     "user": "vegapunk",
-    "text": "Andei testando meus dotes em programação para fazer um script que extrai um texto escondido dentro de um PNG, descriptografa usando uma senha e revela a mensagem secreta armazenada nela. @joyboy dá uma olhada, você vai gostar",
+    "text": "Andei testando meus dotes em programação. @joyboy dá uma olhada, você vai gostar",
     "file": "/scripts/extract.js",
     "isImage": false
   },
