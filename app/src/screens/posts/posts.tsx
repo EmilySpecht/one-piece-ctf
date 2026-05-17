@@ -71,7 +71,7 @@ export const Posts = () => {
         <div className="posts-title">
           <span className="pirate-flag">🏴‍☠️</span>
           <div>
-            <h1>One Piece Log</h1>
+            <h1>Crew One Piece Log</h1>
             <p>Journals from the Grand Line, shipmates, marines and legends.</p>
           </div>
         </div>
