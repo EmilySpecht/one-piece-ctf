@@ -1,0 +1,57 @@
+services:
+  app:
+    build:
+      context: ./app
+      dockerfile: Dockerfile
+    container_name: ctf-frontend
+    ports:
+      - "3000:80"
+    depends_on:
+      - api
+    networks:
+      - app-network
+
+  api:
+    build:
+      context: ./api
+      dockerfile: Dockerfile
+    container_name: ctf-api
+    ports:
+      - "3002:3002"
+    env_file:
+      - ./api/.env
+    depends_on:
+      db:
+        condition: service_healthy
+    volumes:
+      - ./api/tmp/uploads-cert:/usr/src/app/tmp/uploads-cert
+    networks:
+      - app-network
+
+  db:
+    image: mysql:8
+    container_name: ctf-mysql
+    restart: unless-stopped
+    environment:
+      MYSQL_ROOT_PASSWORD: rootpass
+      MYSQL_DATABASE: validate
+      MYSQL_USER: validate-cert-auth-manager
+      MYSQL_PASSWORD: secretpass
+    ports:
+      - "3307:3306"
+    volumes:
+      - db_data:/var/lib/mysql
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-h", "localhost"]
+      interval: 5s
+      timeout: 5s
+      retries: 20
+    networks:
+      - app-network
+
+volumes:
+  db_data:
+
+networks:
+  app-network:
+    driver: bridge
