@@ -417,6 +417,21 @@ app.post("/setup", async (req, res) => {
   }
 });
 
+app.post("/navio", (req, res) => {
+  const clearance = req.header("X-PUNK-CLEARANCE");
+  const validClearance = "true";
+
+  if (clearance != validClearance) {
+    return res.status(404).json({
+      error: "É necessário o header X-PUNK-CLEARANCE",
+    });
+  }
+
+  return res.json({
+    flag: "flag{the_ancient_ship_still_sails}",
+  });
+});
+
 // Inicializa o banco de dados e inicia o servidor
 initializeDatabase()
   .then(() => {
