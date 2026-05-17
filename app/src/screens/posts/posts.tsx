@@ -24,7 +24,7 @@ export const Posts = () => {
   const { createPost } = useCreatePost();
 
   const typedPosts = posts as Post[];
-  const visiblePosts = typedPosts.slice(0, 6);
+  const visiblePosts = typedPosts.slice(0, 9);
 
   const getUserSlug = (user: string) => user.replace(/\s+/g, "").toLowerCase();
 
