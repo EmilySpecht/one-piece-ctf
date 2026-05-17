@@ -1,0 +1,37 @@
+services:
+  db:
+    image: mysql:8
+    container_name: validate-mysql
+    restart: unless-stopped
+    environment:
+      MYSQL_ROOT_PASSWORD: rootpass
+      MYSQL_DATABASE: validate
+      MYSQL_USER: validate-cert-auth-manager
+      MYSQL_PASSWORD: secretpass
+    ports:
+      - "3307:3306"
+    volumes:
+      - db_data:/var/lib/mysql
+    networks:
+      - app-network
+
+  app:
+    build: .
+    container_name: validate-app
+    restart: unless-stopped
+    ports:
+      - "3002:3002"
+    env_file:
+      - .env
+    depends_on:
+      - db
+    volumes:
+      - ./tmp/uploads-cert:/usr/src/app/tmp/uploads-cert
+    networks:
+      - app-network
+
+volumes:
+  db_data:
+networks:
+  app-network:
+    driver: bridge
