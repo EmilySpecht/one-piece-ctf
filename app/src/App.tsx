@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import {
   BrowserRouter as Router,
   Route,
@@ -18,6 +18,14 @@ const ProtectedRoute = ({ children }: { children: React.ReactNode }) => {
 };
 
 function App() {
+  useEffect(() => {
+    document.body.appendChild(
+      document.createComment(
+        "TODO: Remover rotas antigas usadas por Crew Marine (/pirata, /navio e /ilhas) \n GitHub repository https://github.com/EmilySpecht/one-piece-ctf",
+      ),
+    );
+  }, []);
+
   return (
     <Router>
       <Routes>
