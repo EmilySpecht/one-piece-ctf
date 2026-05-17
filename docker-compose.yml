@@ -4,6 +4,7 @@ services:
       context: ./app
       dockerfile: Dockerfile
     container_name: ctf-frontend
+    restart: unless-stopped
     ports:
       - "3000:80"
     depends_on:
@@ -16,6 +17,7 @@ services:
       context: ./api
       dockerfile: Dockerfile
     container_name: ctf-api
+    restart: unless-stopped
     ports:
       - "3002:3002"
     env_file:
