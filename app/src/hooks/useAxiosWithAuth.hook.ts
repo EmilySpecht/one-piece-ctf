@@ -3,7 +3,7 @@ import axios, { AxiosInstance } from "axios";
 const API_BASE_URL = process.env.REACT_APP_API_URL;
 
 const axiosInstance: AxiosInstance = axios.create({
-  baseURL: API_BASE_URL || "http://localhost:3002",
+  baseURL: API_BASE_URL || "http://0.0.0.0:3002",
   timeout: 15000,
 });
 

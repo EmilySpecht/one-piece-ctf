@@ -42,7 +42,7 @@ export const Profile = () => {
       </header>
 
       <div className="profile-actions">
-        <Link to="/posts" className="profile-back">
+        <Link to="/" className="profile-back">
           ← Voltar aos posts
         </Link>
       </div>
